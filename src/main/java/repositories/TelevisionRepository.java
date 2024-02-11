@@ -1,2 +1,4 @@
-package repositories;public class TelevisionRepository {
+package repositories;
+
+public class TelevisionRepository {
 }
