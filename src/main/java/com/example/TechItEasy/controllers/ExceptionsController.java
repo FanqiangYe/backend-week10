@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ExceptionsController {
     @ExceptionHandler(value = RecordNotFoundException.class)
-    public ResponseEntity<Object>
+    public ResponseEntity<String>
     exception(RecordNotFoundException exception){
-        return new ResponseEntity<Object>(
+        return new ResponseEntity<>(
                 exception.getMessage(), HttpStatus.NOT_FOUND
         );
     }

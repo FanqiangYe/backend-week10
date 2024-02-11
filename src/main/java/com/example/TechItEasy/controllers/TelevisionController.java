@@ -9,8 +9,10 @@ import java.util.List;
 @RestController
 public class TelevisionController {
 
+    @RequestMapping("/televisions")
+
     @GetMapping("/televisions")
-    public ResponseEntity<Object> getAllTelevisions(){
+    public ResponseEntity<String> getAllTelevisions(){
         return ResponseEntity.ok("televisions");
     }
 
@@ -25,12 +27,12 @@ public class TelevisionController {
     }
 
     @PutMapping("televisions/{id}")
-    public ResponseEntity<Object> updateTelevision(@PathVariable long id, @RequestBody String television){
+    public ResponseEntity<Void> updateTelevision(@PathVariable long id, @RequestBody String television){
        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("televisions/{id}")
-    public ResponseEntity<Object> deleteTelevision(@PathVariable long id){
+    public ResponseEntity<Void> deleteTelevision(@PathVariable long id){
         return ResponseEntity.noContent().build();
     }
 

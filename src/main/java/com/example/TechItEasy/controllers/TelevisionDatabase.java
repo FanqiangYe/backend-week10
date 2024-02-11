@@ -16,9 +16,10 @@ public class TelevisionDatabase {
     private static final List<String> televisionDatabase = new ArrayList<>();
 
     @GetMapping("/televisions")
-    public ResponseEntity<Object> getTelevisionDatabase() {
+    public ResponseEntity<List<String>> getTelevisionDatabase() {
         return ResponseEntity.ok(televisionDatabase);
     }
+
 
     @GetMapping("/televisions/{id}")
     public ResponseEntity<Object> getTelevision(@PathVariable int id) {
@@ -28,8 +29,9 @@ public class TelevisionDatabase {
     @PostMapping("/televisions")
     public ResponseEntity<Object> addTelevision(@RequestBody String television) {
         televisionDatabase.add(television);
-        return ResponseEntity.created(null).body("Samsung Television HD");
+        return ResponseEntity.created(null).body(television);
     }
+
 
     @DeleteMapping("/televisions/{id}")
     public ResponseEntity<Object> deleteTelevision(@PathVariable int id) {
