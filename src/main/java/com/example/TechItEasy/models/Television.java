@@ -3,8 +3,13 @@ package com.example.TechItEasy.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+import java.time.LocalDate;
+
 
 @Entity
+@Table (name = "Televisions")
 public class Television {
     @Id
     @GeneratedValue
@@ -24,11 +29,12 @@ public class Television {
     Boolean ambiLight;
     Integer originalStock;
     Integer sold;
+    LocalDate saleDate;
 
     public Television(Long id, String brand, String name, Double price, Double availableSize,
                       Double refreshRate, String screenType, String screenQuality, Boolean smartTv,
                       Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth,
-                      Boolean ambiLight, Integer originalStock, Integer sold) {
+                      Boolean ambiLight, Integer originalStock, Integer sold, LocalDate saleDate) {
         this.id = id;
         this.brand = brand;
         this.name = name;
@@ -45,10 +51,19 @@ public class Television {
         this.ambiLight = ambiLight;
         this.originalStock = originalStock;
         this.sold = sold;
+        this.saleDate = saleDate;
     }
 
     public Television() {
 
+    }
+
+    public LocalDate getSaleDate() {
+        return saleDate;
+    }
+
+    public void setSaleDate(LocalDate saleDate) {
+        this.saleDate = saleDate;
     }
 
     public void setId(Long id) {

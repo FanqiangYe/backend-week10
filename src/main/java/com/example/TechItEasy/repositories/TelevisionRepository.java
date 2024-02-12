@@ -1,4 +1,4 @@
-package repositories;
+package com.example.TechItEasy.repositories;
 
 import com.example.TechItEasy.models.Television;
 import org.springframework.data.jpa.repository.JpaRepository;
