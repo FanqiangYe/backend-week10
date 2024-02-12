@@ -25,11 +25,10 @@ public class Television {
     Integer originalStock;
     Integer sold;
 
-    public Television(Long id, String brand, String name, Double price,
-                      Double availableSize, Double refreshRate, String screenType,
-                      String screenQuality, Boolean smartTv, Boolean wifi,
-                      Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight,
-                      Integer originalStock, Integer sold) {
+    public Television(Long id, String brand, String name, Double price, Double availableSize,
+                      Double refreshRate, String screenType, String screenQuality, Boolean smartTv,
+                      Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth,
+                      Boolean ambiLight, Integer originalStock, Integer sold) {
         this.id = id;
         this.brand = brand;
         this.name = name;
@@ -46,6 +45,14 @@ public class Television {
         this.ambiLight = ambiLight;
         this.originalStock = originalStock;
         this.sold = sold;
+    }
+
+    public Television() {
+
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getId() {

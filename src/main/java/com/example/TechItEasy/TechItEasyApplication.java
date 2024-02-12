@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TechItEasyApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(TechItEasyApplication.class, args);
 	}
 
