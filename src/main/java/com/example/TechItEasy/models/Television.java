@@ -29,7 +29,6 @@ public class Television {
     Boolean ambiLight;
     Integer originalStock;
     Integer sold;
-    LocalDate saleDate;
 
     public Television(Long id, String brand, String name, Double price, Double availableSize,
                       Double refreshRate, String screenType, String screenQuality, Boolean smartTv,
@@ -51,19 +50,11 @@ public class Television {
         this.ambiLight = ambiLight;
         this.originalStock = originalStock;
         this.sold = sold;
-        this.saleDate = saleDate;
+
     }
 
     public Television() {
 
-    }
-
-    public LocalDate getSaleDate() {
-        return saleDate;
-    }
-
-    public void setSaleDate(LocalDate saleDate) {
-        this.saleDate = saleDate;
     }
 
     public void setId(Long id) {

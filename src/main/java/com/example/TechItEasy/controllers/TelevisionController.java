@@ -2,9 +2,9 @@ package com.example.TechItEasy.controllers;
 
 import com.example.TechItEasy.exceptions.RecordNotFoundException;
 import com.example.TechItEasy.models.Television;
+import com.example.TechItEasy.services.TelevisionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.TechItEasy.repositories.TelevisionRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,38 +13,33 @@ import java.util.Optional;
 @RequestMapping("/televisions")
 public class TelevisionController {
 
+    private final TelevisionService televisionService;
 
-    private final TelevisionRepository televisionRepository;
-
-
-    public TelevisionController(TelevisionRepository televisionRepository) {
-        this.televisionRepository = televisionRepository;
+    public TelevisionController(TelevisionService televisionService) {
+        this.televisionService = televisionService;
     }
+
 
     @GetMapping
     public ResponseEntity<List<Television>> getAllTelevisions() {
-        return ResponseEntity.ok(televisionRepository.findAll());
+        return ResponseEntity.ok(televisionService.getTelevisions());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getTelevision(@PathVariable long id) {
-        Optional<Television> optionalTelevision = televisionRepository.findById(id);
-        if (optionalTelevision.isPresent()) {
-            return ResponseEntity.ok(optionalTelevision.get());
-        } else {
-            throw new RecordNotFoundException("Television not found with id: " + id);
-        }
+        Television television = televisionService.getTelevision(id);
+            return ResponseEntity.ok(television);
     }
 
     @PostMapping
     public ResponseEntity<Void> addTelevision(@RequestBody Television television) {
-        televisionRepository.save(television);
+        televisionService.saveTelevision(television);
         return ResponseEntity.created(null).build();
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Television> updateTelevision(@PathVariable long id, @RequestBody Television updatedTelevision) {
-        Optional<Television> optionalTelevision = televisionRepository.findById(id);
+        Optional<Television> optionalTelevision = televisionService.findById(id);
 
         if (optionalTelevision.isPresent()) {
             Television existingTelevision = optionalTelevision.get();
@@ -63,9 +58,8 @@ public class TelevisionController {
             existingTelevision.setAmbiLight(updatedTelevision.getAmbiLight());
             existingTelevision.setOriginalStock(updatedTelevision.getOriginalStock());
             existingTelevision.setSold(updatedTelevision.getSold());
-            existingTelevision.setSaleDate(updatedTelevision.getSaleDate());
 
-            Television updatedTelevisionEntity = televisionRepository.save(existingTelevision);
+            Television updatedTelevisionEntity = televisionService.save(existingTelevision);
 
             return ResponseEntity.ok(updatedTelevisionEntity);
         } else {
@@ -76,9 +70,9 @@ public class TelevisionController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTelevision(@PathVariable long id) {
-        Optional<Television> optionalTelevision = televisionRepository.findById(id);
+        Optional<Television> optionalTelevision = televisionService.findById(id);
         if (optionalTelevision.isPresent()) {
-            televisionRepository.deleteById(id);
+            televisionService.deleteById(id);
             return ResponseEntity.noContent().build();
         } else {
             throw new RecordNotFoundException("Television not found with id: " + id);
