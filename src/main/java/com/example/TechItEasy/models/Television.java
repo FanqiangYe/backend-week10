@@ -1,9 +1,7 @@
 package com.example.TechItEasy.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
@@ -13,22 +11,25 @@ import java.time.LocalDate;
 public class Television {
     @Id
     @GeneratedValue
-    Long id;
-    String brand;
-    String name;
-    Double price;
-    Double availableSize;
-    Double refreshRate;
-    String screenType;
-    String screenQuality;
-    Boolean smartTv;
-    Boolean wifi;
-    Boolean voiceControl;
-    Boolean hdr;
-    Boolean bluetooth;
-    Boolean ambiLight;
-    Integer originalStock;
-    Integer sold;
+    private Long id;
+    @Column(unique = false, nullable = false)
+    private String brand;
+    @Column(unique = false, nullable = false)
+    private String name;
+    @Column(unique = false, nullable = false)
+    private Double price;
+    private Double availableSize;
+    private Double refreshRate;
+    private String screenType;
+    private String screenQuality;
+    private Boolean smartTv;
+    private Boolean wifi;
+    private Boolean voiceControl;
+    private Boolean hdr;
+    private Boolean bluetooth;
+    private Boolean ambiLight;
+    private Integer originalStock;
+    private Integer sold;
 
     public Television(Long id, String brand, String name, Double price, Double availableSize,
                       Double refreshRate, String screenType, String screenQuality, Boolean smartTv,
