@@ -1,9 +1,8 @@
 package com.example.TechItEasy.DTOS;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 
-public class RequestTelevisionDto {
+public class TelevisionInputDto {
 
     @NotNull
     private String brand;

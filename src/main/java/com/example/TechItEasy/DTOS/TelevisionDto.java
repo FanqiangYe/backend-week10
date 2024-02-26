@@ -1,6 +1,6 @@
 package com.example.TechItEasy.DTOS;
 
-public class ResponseTelevisionDto {
+public class TelevisionDto {
 
     private Long id;
     private String brand;
@@ -18,10 +18,10 @@ public class ResponseTelevisionDto {
     private Boolean ambiLight;
 
 
-    public ResponseTelevisionDto() {
+    public TelevisionDto() {
     }
 
-    public ResponseTelevisionDto(Long id, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight) {
+    public TelevisionDto(Long id, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight) {
         this.id = id;
         this.brand = brand;
         this.name = name;
