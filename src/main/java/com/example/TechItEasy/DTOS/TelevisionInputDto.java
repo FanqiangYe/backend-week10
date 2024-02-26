@@ -1,22 +1,14 @@
-package com.example.TechItEasy.models;
+package com.example.TechItEasy.DTOS;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDate;
+public class TelevisionInputDto {
 
-
-@Entity
-@Table (name = "Televisions")
-public class Television {
-    @Id
-    @GeneratedValue
-    private Long id;
-    @Column(unique = false, nullable = false)
+    @NotNull
     private String brand;
-    @Column(unique = false, nullable = false)
+    @NotNull
     private String name;
-    @Column(unique = false, nullable = false)
+    @NotNull
     private Double price;
     private Double availableSize;
     private Double refreshRate;
@@ -30,41 +22,6 @@ public class Television {
     private Boolean ambiLight;
     private Integer originalStock;
     private Integer sold;
-
-    public Television(Long id, String brand, String name, Double price, Double availableSize,
-                      Double refreshRate, String screenType, String screenQuality, Boolean smartTv,
-                      Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth,
-                      Boolean ambiLight, Integer originalStock, Integer sold, LocalDate saleDate) {
-        this.id = id;
-        this.brand = brand;
-        this.name = name;
-        this.price = price;
-        this.availableSize = availableSize;
-        this.refreshRate = refreshRate;
-        this.screenType = screenType;
-        this.screenQuality = screenQuality;
-        this.smartTv = smartTv;
-        this.wifi = wifi;
-        this.voiceControl = voiceControl;
-        this.hdr = hdr;
-        this.bluetooth = bluetooth;
-        this.ambiLight = ambiLight;
-        this.originalStock = originalStock;
-        this.sold = sold;
-
-    }
-
-    public Television() {
-
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 
     public String getBrand() {
         return brand;

@@ -1,22 +1,10 @@
-package com.example.TechItEasy.models;
+package com.example.TechItEasy.DTOS;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+public class TelevisionDto {
 
-import java.time.LocalDate;
-
-
-@Entity
-@Table (name = "Televisions")
-public class Television {
-    @Id
-    @GeneratedValue
     private Long id;
-    @Column(unique = false, nullable = false)
     private String brand;
-    @Column(unique = false, nullable = false)
     private String name;
-    @Column(unique = false, nullable = false)
     private Double price;
     private Double availableSize;
     private Double refreshRate;
@@ -28,13 +16,12 @@ public class Television {
     private Boolean hdr;
     private Boolean bluetooth;
     private Boolean ambiLight;
-    private Integer originalStock;
-    private Integer sold;
 
-    public Television(Long id, String brand, String name, Double price, Double availableSize,
-                      Double refreshRate, String screenType, String screenQuality, Boolean smartTv,
-                      Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth,
-                      Boolean ambiLight, Integer originalStock, Integer sold, LocalDate saleDate) {
+
+    public TelevisionDto() {
+    }
+
+    public TelevisionDto(Long id, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight) {
         this.id = id;
         this.brand = brand;
         this.name = name;
@@ -49,21 +36,14 @@ public class Television {
         this.hdr = hdr;
         this.bluetooth = bluetooth;
         this.ambiLight = ambiLight;
-        this.originalStock = originalStock;
-        this.sold = sold;
-
-    }
-
-    public Television() {
-
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getBrand() {
@@ -168,21 +148,5 @@ public class Television {
 
     public void setAmbiLight(Boolean ambiLight) {
         this.ambiLight = ambiLight;
-    }
-
-    public Integer getOriginalStock() {
-        return originalStock;
-    }
-
-    public void setOriginalStock(Integer originalStock) {
-        this.originalStock = originalStock;
-    }
-
-    public Integer getSold() {
-        return sold;
-    }
-
-    public void setSold(Integer sold) {
-        this.sold = sold;
     }
 }
